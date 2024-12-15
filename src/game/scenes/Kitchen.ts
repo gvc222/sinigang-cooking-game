@@ -127,16 +127,16 @@ export class Kitchen extends Scene {
         // Get all available card images
         const allCardImages = this.getAllCardImages();
         
-        const image1 = this.add.image(103, 227, `${image}`);
-        const image2 = this.add.image(103, 227+164, `${image}`);
-        const image3 = this.add.image(103, 227+164+164, `${image}`);
-        this.imageArray = [ image1, image2, image3 ]
+        const image1 = this.add.image(103, 227, `placeholder`);
+        const image2 = this.add.image(103, 227+164, `placeholder`);
+        const image3 = this.add.image(103, 227+164+164, `placeholder`);
 
-        
+        // Pick from all images aside from the correct one to avoid duplicating
         const availableImages = allCardImages.filter(image => 
             image !== correctAnswer
         )
         
+        // Randomize from the available images
         const wrongAnswers = this.getRandomItems(availableImages, 2);
         // debugging only
         console.log("Wrong Answers:", wrongAnswers)
