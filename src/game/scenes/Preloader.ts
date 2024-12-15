@@ -34,6 +34,42 @@ export class Preloader extends Scene
 
         this.load.image('logo', 'logo.png');
         this.load.image('star', 'star.png');
+        this.load.image('background', 'bg-blur.png');
+        this.load.image('button-start-hover', 'button-start-hover.png');
+        this.load.image('button-start', 'button-start.png');
+        this.load.image('button-stove-off-hover', 'button-stove-off-hover.png');
+        this.load.image('button-stove-off', 'button-stove-off.png');
+        this.load.image('button-stove-on-hover', 'button-stove-on-hover.png');
+        this.load.image('button-stove-on', 'button-stove-on.png');
+        this.load.image('button-wait-hover', 'button-wait-hover.png');
+        this.load.image('button-wait', 'button-wait.png');
+        this.load.image('card-add-fire', 'card-add-water.png');
+        this.load.image('card-add-water', 'card-add-water.png');
+        this.load.image('card-cover', 'card-cover.png');
+        this.load.image('card-meat', 'card-meat.png');
+        this.load.image('card-ong-choy', 'card-ong-choy.png');
+        this.load.image('card-onion', 'card-onion.png');
+        this.load.image('card-remove-fire', 'card-remove-water.png');
+        this.load.image('card-soup-mix', 'card-soup-mix.png');
+        this.load.image('card-stir', 'card-stir.png');
+        this.load.image('card-taro', 'card-taro.png');
+        this.load.image('card-tomato', 'card-tomato.png');
+        this.load.image('card-uncover', 'card-uncover.png');
+        this.load.image('card-wait', 'card-wait.png');
+        this.load.image('how-to-cook', 'how-to-cook.png');
+        this.load.image('ladle', 'ladle.png');
+        this.load.image('pot-cover', 'pot-cover.png');
+        this.load.image('pot-meat-in', 'pot-meat-in.png');
+        this.load.image('pot-taro-in', 'pot-taro-in.png');
+        this.load.image('pot-tomato-in', 'pot-tomato-in.png');
+        this.load.image('pot-tomato-onion-in', 'pot-tomato-onion-in.png');
+        this.load.image('pot-water-in', 'pot-water-in.png');
+        this.load.image('sinigang', 'sinigang.png');
+        this.load.image('tabletop', 'tabletop.png');
+        this.load.image('header-box', 'header-box.png');
+        this.load.image('pot', 'pot.png');
+        this.load.image('stove', 'stove.png');
+        
     }
 
     create ()
@@ -42,6 +78,6 @@ export class Preloader extends Scene
         //  For example, you can define global animations here, so we can use them in other scenes.
 
         //  Move to the MainMenu. You could also swap this for a Scene Transition, such as a camera fade.
-        this.scene.start('MainMenu');
+        this.scene.start('MainMenu'); //should be MainMenu
     }
 }

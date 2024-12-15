@@ -1,0 +1,118 @@
+[
+    {
+        "step": 1,
+        "description": "Add water to the pot.",
+        "answer": "card-add-water.png"
+    },
+    {
+        "step": 2,
+        "description": "Turn on the stove.",
+        "answer": "card-add-fire.png"
+    },
+    {
+        "step": 3,
+        "description": "Add the tomato in the pot.",
+        "answer": "card-tomato.png"
+    },
+    {
+        "step": 4,
+        "description": "Add the onion in the pot.",
+        "answer": "card-onion.png"
+    },
+    {
+        "step": 5,
+        "description": "Add the taro root in the pot.",
+        "answer": "card-taro.png"
+        
+    },
+    {
+        "step": 6,
+        "description": "Add the meat in the pot.",
+        "answer": "card-meat.png"
+    },
+    {
+        "step": 7,
+        "description": "Stir the contents of the pot.",
+        "answer": "card-stir.png"
+    },
+    {
+        "step": 8,
+        "description": "Cover.",
+        "answer": "card-cover.png"
+    },
+    {
+        "step": 9,
+        "description": "Wait.",
+        "answer": "card-wait.png"
+    },
+    {
+        "step": 10,
+        "description": "Uncover the pot.",
+        "answer": "card-uncover.png"
+    },
+    {
+        "step": 11,
+        "description": "Stir the contents of the pot.",
+        "answer": "card-stir.png"
+    },
+    {
+        "step": 12,
+        "description": "Add the tamarind soup base mix.",
+        "answer": "card-soup-mix.png"
+    },
+    {
+        "step": 13,
+        "description": "Stir the contents of the pot.",
+        "answer": "card-stir.png"
+    },
+    {
+        "step": 14,
+        "description": "Cover.",
+        "answer": "card-cover.png"
+    },
+    {
+        "step": 15,
+        "description": "Wait.",
+        "answer": "card-wait.png"
+    },
+    {
+        "step": 16,
+        "description": "Uncover the pot.",
+        "answer": "card-uncover.png"
+    },
+    {
+        "step": 17,
+        "description": "Stir the contents of the pot.",
+        "answer": "card-stir.png"
+    },
+    {
+        "step": 18,
+        "description": "Add the Ong Choy.",
+        "answer": "card-ong-choy.png"
+    },
+    {
+        "step": 19,
+        "description": "Turn off the stove.",
+        "answer": "card-remove-fire.png"
+    },
+    {
+        "step": 20,
+        "description": "Cover.",
+        "answer": "card-cover.png"
+    },
+    {
+        "step": 21,
+        "description": "Wait.",
+        "answer": "card-wait.png"
+    },
+    {
+        "step": 22,
+        "description": "Uncover.",
+        "answer": "card-uncover.png"
+    },
+    {
+        "step": 23,
+        "description": "Stir the contents of the pot.",
+        "answer": "card-stir.png"
+    }
+]
