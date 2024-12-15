@@ -10,7 +10,7 @@ export class Kitchen extends Scene {
     private kitchenText: Phaser.GameObjects.Text;
     
     // Card references
-    private imageArray: Phaser.GameObjects.Image[] = []
+    private cardImages: Phaser.GameObjects.Image[] = []
 
     constructor () {
         super('Kitchen');
@@ -33,6 +33,8 @@ export class Kitchen extends Scene {
         "card-uncover.png",
         "card-wait.png"
     ]
+
+
 
     preload() {
         this.cookingStepsManager = new CookingStepsManager(this);
@@ -124,12 +126,18 @@ export class Kitchen extends Scene {
         // console.log("Current Step", currentStep);
         // console.log("Correct Answer", correctAnswer);
         
+        const cardPositions = [
+            { x: 103, y: 227 },
+            { x: 103, y: 227 + 164 },
+            { x: 103, y: 227 + 164 + 164 },
+        ]
+
+        // Destroy existing card images
+        this.cardImages.forEach(image => image.destroy());
+        this.cardImages = [];
+        
         // Get all available card images
         const allCardImages = this.getAllCardImages();
-        
-        const image1 = this.add.image(103, 227, `placeholder`);
-        const image2 = this.add.image(103, 227+164, `placeholder`);
-        const image3 = this.add.image(103, 227+164+164, `placeholder`);
 
         // Pick from all images aside from the correct one to avoid duplicating
         const availableImages = allCardImages.filter(image => 
@@ -149,28 +157,26 @@ export class Kitchen extends Scene {
         this.shuffleArray(cardImages)
         console.log("Final Card Images:", cardImages);
 
-        // Update existing card images
-        this.imageArray.forEach((image, index) => {
-            
-            // remove any existing interactive events
-            image.removeInteractive();
+        // Create and add new cards images
+        cardImages.forEach((cardName, index) => {
 
-            // Update texture
-            const texture = cardImages[index];
-            console.log(`Setting card ${index} to texture:`, cardImages[index])
+            const newImage = this.add.image(
+                cardPositions[index].x,
+                cardPositions[index].y,
+                `${cardName}`
+            )
+            this.add.image(cardPositions[0].x, cardPositions[0].y, `${cardName}`)
 
-            
             // Make interactive and add click handler
-            image.setInteractive();
-            image.on('pointerdown', () => {
-                if (cardImages[index] === correctAnswer) {
+            newImage.setInteractive();
+            newImage.on('pointerdown', () => {
+                if (cardName === correctAnswer) {
                     this.handleCorrectChoice();
                 } else {
                     this.handleWrongChoice();
                 }
             })
-        }
-        )
+        })
     }
 
     // Prepare an array of all possible card images
