@@ -43,13 +43,13 @@ export class Preloader extends Scene
         this.load.image('button-stove-on', 'button-stove-on.png');
         this.load.image('button-wait-hover', 'button-wait-hover.png');
         this.load.image('button-wait', 'button-wait.png');
-        this.load.image('card-add-fire', 'card-add-water.png');
+        this.load.image('card-add-fire', 'card-add-fire.png');
         this.load.image('card-add-water', 'card-add-water.png');
         this.load.image('card-cover', 'card-cover.png');
         this.load.image('card-meat', 'card-meat.png');
         this.load.image('card-ong-choy', 'card-ong-choy.png');
         this.load.image('card-onion', 'card-onion.png');
-        this.load.image('card-remove-fire', 'card-remove-water.png');
+        this.load.image('card-remove-fire', 'card-remove-fire.png');
         this.load.image('card-soup-mix', 'card-soup-mix.png');
         this.load.image('card-stir', 'card-stir.png');
         this.load.image('card-taro', 'card-taro.png');
@@ -69,7 +69,12 @@ export class Preloader extends Scene
         this.load.image('header-box', 'header-box.png');
         this.load.image('pot', 'pot.png');
         this.load.image('stove', 'stove.png');
-        
+        this.load.image('fire', 'fire.png');
+        this.load.image('pot-covered', 'pot-covered.png');
+        this.load.image('pot-sinigang', 'pot-sinigang.png');
+        this.load.image('pot-meat-in-cooked', 'pot-meat-in-cooked.png');
+        this.load.image('pot-sinigang-ong-choy', 'pot-sinigang-ong-choy.png');
+        this.load.image('pot-sinigang-ong-choy-cooked', 'pot-sinigang-ong-choy-cooked.png');
     }
 
     create ()

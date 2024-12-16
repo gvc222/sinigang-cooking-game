@@ -11,6 +11,9 @@ export class Kitchen extends Scene {
     
     // Card references
     private cardImages: Phaser.GameObjects.Image[] = []
+    cooktop: any;
+    currentStepData: any;
+    fire: any;
 
     constructor () {
         super('Kitchen');
@@ -19,21 +22,29 @@ export class Kitchen extends Scene {
     // Progress tracking
     private progress: number = 0;
     private cardList = [
-        "card-add-fire.png",
-        "card-add-water.png",
-        "card-cover.png",
-        "card-meat.png",
-        "card-ong-choy.png",
-        "card-onion.png",
-        "card-remove-fire.png",
-        "card-soup-mix.png",
-        "card-stir.png",
-        "card-taro.png",
-        "card-tomato.png",
-        "card-uncover.png",
-        "card-wait.png"
+        "card-add-fire",
+        "card-add-water",
+        "card-cover",
+        "card-meat",
+        "card-ong-choy",
+        "card-onion",
+        "card-remove-fire",
+        "card-soup-mix",
+        "card-stir",
+        "card-taro",
+        "card-tomato",
+        "card-uncover",
+        "card-wait"
     ]
-
+    // private cooktopList = [
+    //     "pot",
+    //     "pot-cover",
+    //     "pot-meat-in",
+    //     "pot-taro-in",
+    //     "pot-tomato-in",
+    //     "pot-tomato-onion-in",
+    //     "pot-water-in"
+    // ]
 
 
     preload() {
@@ -65,8 +76,8 @@ export class Kitchen extends Scene {
         this.add.image(512, 486 + 80, 'stove')
         
         // display pot
-        this.add.image(512, 435, 'pot')
-
+        let cooktop = this.add.image(512, 435, 'pot');
+        
         // display cards on the left
         // this.cards = [
         //     this.add.image(103, 227, ''),
@@ -76,9 +87,9 @@ export class Kitchen extends Scene {
         
 
         // creating a blank text to display steps
-        this.kitchenText = this.add.text(100, 38, '', {
+        this.kitchenText = this.add.text(512, 38, '', {
             fontFamily: 'Arial', fontSize: 18, color: '#ffffff',
-            align: 'left'
+            align: 'center'
         }).setOrigin(0.5).setDepth(100);
 
         // set the steps text
@@ -133,7 +144,11 @@ export class Kitchen extends Scene {
         ]
 
         // Destroy existing card images
-        this.cardImages.forEach(image => image.destroy());
+        console.log("THIS CARD IMAGES ROUND 2", this.cardImages)
+        this.cardImages.forEach(image => {
+            image.removeInteractive();
+            image.destroy();
+        });
         this.cardImages = [];
         
         // Get all available card images
@@ -145,7 +160,7 @@ export class Kitchen extends Scene {
         )
         
         // Randomize from the available images
-        const wrongAnswers = this.getRandomItems(availableImages, 2);
+        const wrongAnswers = this.getUniqueRandomItems(availableImages, 2);
         // debugging only
         console.log("Wrong Answers:", wrongAnswers)
         
@@ -159,13 +174,11 @@ export class Kitchen extends Scene {
 
         // Create and add new cards images
         cardImages.forEach((cardName, index) => {
-
             const newImage = this.add.image(
                 cardPositions[index].x,
                 cardPositions[index].y,
                 `${cardName}`
             )
-            this.add.image(cardPositions[0].x, cardPositions[0].y, `${cardName}`)
 
             // Make interactive and add click handler
             newImage.setInteractive();
@@ -176,13 +189,16 @@ export class Kitchen extends Scene {
                     this.handleWrongChoice();
                 }
             })
+
+            // Add to cardImages array
+            this.cardImages.push(newImage);
         })
+        // this is unreachable
+        // return cardImages;
     }
 
-    // Prepare an array of all possible card images
-    private getRandomItems(arr: string[], count: number): string[] {
-        const shuffled = [...arr].sort(() => 0.5 - Math.random());
-        return shuffled.slice(0, count)
+    private getAllCardImages(): string[] {
+        return this.cardList
     }
 
     private shuffleArray(array: string[]) {
@@ -192,22 +208,100 @@ export class Kitchen extends Scene {
         }
     }
     
-    private getAllCardImages(): string[] {
-        return this.cardList
-    }
+    // Get unique items for choices
+    private getUniqueRandomItems(arr: string[], count: number): string[] {
+        const availableCopy = [ ...arr ];
+        const result: string[] = [];
 
+        count = Math.min(count, availableCopy.length);
+
+        while (result.length < count) {
+            const randomIndex = Math.floor(Math.random() * availableCopy.length);
+
+            //Remove and add item
+            const [ selectedItem ] = availableCopy.splice(randomIndex, 1);
+            result.push(selectedItem);
+        }
+
+        return result;
+    }    
     private handleCorrectChoice() {
         console.log("Correct Answer!")
-        this.progress += 1;
+        this.progress++;
+
+        // destory images here
+        this.cardImages.forEach(card => {
+            card.removeInteractive();
+            card.destroy();
+        });
+        this.cardImages = [];
+
+        // Change cooktop image
+        this.changeCookTop();
+
+        // Check if all steps are completed
+        // Doesn't work yet lol
+        if (this.progress >= this.cookingStepsManager.steps.length) {
+            this.handleGameCompletion();
+        }
+
+        // Setup next step
         this.setupStep();
+    }
+
+    handleGameCompletion() {
+        console.log("Game Completed!");
+
+        const victoryText = this.add.text(
+            this.cameras.main.centerX,
+            this.cameras.main.centerY,
+            'Congratulations! \nRecipe Completed!',
+            {
+                fontSize: '32px',
+                align: 'center'
+            }
+        )
+        victoryText.setOrigin(0.5);
     }
 
     private handleWrongChoice() {
         console.log("Wrong Choice")
     }
 
-    changeScene ()
-    {
-        this.scene.start('Kitchen');
+    changeCookTop() {
+        if (this.cooktop) {
+            this.cooktop.destroy();
+        }
+    
+        // get current step data
+        const currentStepData = this.cookingStepsManager.steps.find(s => s.step === this.progress + 1)
+        // I want to pull the cooktop value from the json file, that corresponds to the progress #
+        if (currentStepData && currentStepData.cooktop && currentStepData.cooktop != "pot-covered") {
+            const cooktopKey = currentStepData.cooktop.toString();
+            this.cooktop = this.add.image(512, 435, cooktopKey);
+        } else if (currentStepData && currentStepData.cooktop && currentStepData.cooktop === "pot-covered") {
+            const cooktopKey = currentStepData.cooktop.toString();
+            this.cooktop = this.add.image(512, 435-45, cooktopKey);
+        }
+
+        // adding fire between steps 3 and 20
+        if (currentStepData && currentStepData.step < 20 && currentStepData.step >= 3) {
+            if (this.fire) {
+                this.fire.destroy()
+            } 
+            
+            // Create new fire image
+            this.fire = this.add.image(512, 540, 'fire');
+        }
+        // Remove fire at step 20 
+        else if (currentStepData && currentStepData.step >= 20) {
+            if (this.fire) {
+                this.fire.destroy();
+                this.fire = null;
+            }
+            
+        }
+        
+
     }
 }
