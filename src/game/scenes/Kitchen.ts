@@ -11,7 +11,7 @@ export class Kitchen extends Scene {
     
     // Card references
     private cardImages: Phaser.GameObjects.Image[] = []
-    cooktop: any;
+    cooktop: string;
     currentStepData: any;
     fire: any;
 
