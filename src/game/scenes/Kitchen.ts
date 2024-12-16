@@ -11,7 +11,7 @@ export class Kitchen extends Scene {
     
     // Card references
     private cardImages: Phaser.GameObjects.Image[] = []
-    cooktop: string;
+    cooktop: any;
     currentStepData: any;
     fire: any;
 
@@ -54,7 +54,7 @@ export class Kitchen extends Scene {
         // Wait for loader to complete
         this.load.once('complete', () => {
             this.cookingStepsManager.processData();
-            console.log("Steps loaded successfully:", this.cookingStepsManager.steps)
+            // console.log("Steps loaded successfully:", this.cookingStepsManager.steps)
         })
     }
     
@@ -119,7 +119,7 @@ export class Kitchen extends Scene {
 
         // Get current step description
         const currentStepData = this.cookingStepsManager.steps.find(s => s.step === this.progress + 1);
-        console.log("currentStepData", currentStepData)
+        // console.log("currentStepData", currentStepData)
         if (currentStepData) {
             this.kitchenText.setText(currentStepData.description);
         }
@@ -144,7 +144,6 @@ export class Kitchen extends Scene {
         ]
 
         // Destroy existing card images
-        console.log("THIS CARD IMAGES ROUND 2", this.cardImages)
         this.cardImages.forEach(image => {
             image.removeInteractive();
             image.destroy();
@@ -162,15 +161,15 @@ export class Kitchen extends Scene {
         // Randomize from the available images
         const wrongAnswers = this.getUniqueRandomItems(availableImages, 2);
         // debugging only
-        console.log("Wrong Answers:", wrongAnswers)
+        // console.log("Wrong Answers:", wrongAnswers)
         
         // Combine correct and wrong answers
         const cardImages = [correctAnswer, ...wrongAnswers];
-        console.log("cardImages", cardImages)
+        // console.log("cardImages", cardImages)
 
         // Shuffle card images
         this.shuffleArray(cardImages)
-        console.log("Final Card Images:", cardImages);
+        // console.log("Final Card Images:", cardImages);
 
         // Create and add new cards images
         cardImages.forEach((cardName, index) => {
@@ -226,7 +225,7 @@ export class Kitchen extends Scene {
         return result;
     }    
     private handleCorrectChoice() {
-        console.log("Correct Answer!")
+        // console.log("Correct Answer!")
         this.progress++;
 
         // destory images here
@@ -250,7 +249,7 @@ export class Kitchen extends Scene {
     }
 
     handleGameCompletion() {
-        console.log("Game Completed!");
+        // console.log("Game Completed!");
 
         const victoryText = this.add.text(
             this.cameras.main.centerX,
@@ -265,7 +264,7 @@ export class Kitchen extends Scene {
     }
 
     private handleWrongChoice() {
-        console.log("Wrong Choice")
+        // console.log("Wrong Choice")
     }
 
     changeCookTop() {
