@@ -34,7 +34,8 @@ export class Preloader extends Scene
 
         this.load.image('logo', 'logo.png');
         this.load.image('star', 'star.png');
-        this.load.image('background', 'bg-blur.png');
+        // this.load.image('background', 'bg-blur.png');
+        this.load.image('background', 'bg.png');
         this.load.image('button-start-hover', 'button-start-hover.png');
         this.load.image('button-start', 'button-start.png');
         this.load.image('button-stove-off-hover', 'button-stove-off-hover.png');

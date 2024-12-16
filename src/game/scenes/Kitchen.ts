@@ -63,7 +63,7 @@ export class Kitchen extends Scene {
         this.camera.setBackgroundColor(0x4B2C25);
 
         // background image
-        this.background = this.add.image(1024/2, 486/2, 'background');
+        this.background = this.add.image(1024/2, 300, 'background');
         this.background.setAlpha(1);
 
         // display header box
