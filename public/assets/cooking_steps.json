@@ -1,0 +1,147 @@
+[
+    {
+        "step": 1,
+        "description": "Add water to the pot.",
+        "answer": "card-add-water",
+        "cooktop": "pot"
+    },
+    {
+        "step": 2,
+        "description": "Turn on the stove.",
+        "answer": "card-add-fire",
+        "cooktop": "pot-water-in"
+    },
+    {
+        "step": 3,
+        "description": "Add the tomato in the pot.",
+        "answer": "card-tomato",
+        "cooktop": "pot-water-in"
+    },
+    {
+        "step": 4,
+        "description": "Add the onion in the pot.",
+        "answer": "card-onion",
+        "cooktop": "pot-tomato-in"
+    },
+    {
+        "step": 5,
+        "description": "Add the taro root in the pot.",
+        "answer": "card-taro",
+        "cooktop": "pot-tomato-onion-in"
+        
+    },
+    {
+        "step": 6,
+        "description": "Add the meat in the pot.",
+        "answer": "card-meat",
+        "cooktop": "pot-taro-in"
+    },
+    {
+        "step": 7,
+        "description": "Stir the contents of the pot.",
+        "answer": "card-stir",
+        "cooktop": "pot-meat-in"
+    },
+    {
+        "step": 8,
+        "description": "Cover.",
+        "answer": "card-cover",
+        "cooktop": "pot-meat-in"
+    },
+    {
+        "step": 9,
+        "description": "Wait.",
+        "answer": "card-wait",
+        "cooktop": "pot-covered"
+    },
+    {
+        "step": 10,
+        "description": "Uncover the pot.",
+        "answer": "card-uncover",
+        "cooktop": "pot-covered"
+    },
+    {
+        "step": 11,
+        "description": "Stir the contents of the pot.",
+        "answer": "card-stir",
+        "cooktop": "pot-meat-in-cooked"
+    },
+    {
+        "step": 12,
+        "description": "Add the tamarind soup base mix.",
+        "answer": "card-soup-mix",
+        "cooktop": "pot-sinigang"
+    },
+    {
+        "step": 13,
+        "description": "Stir the contents of the pot.",
+        "answer": "card-stir",
+        "cooktop": "pot-sinigang"
+    },
+    {
+        "step": 14,
+        "description": "Cover.",
+        "answer": "card-cover",
+        "cooktop": "pot-sinigang"
+    },
+    {
+        "step": 15,
+        "description": "Wait.",
+        "answer": "card-wait",
+        "cooktop": "pot-covered"
+    },
+    {
+        "step": 16,
+        "description": "Uncover the pot.",
+        "answer": "card-uncover",
+        "cooktop": "pot-covered"
+    },
+    {
+        "step": 17,
+        "description": "Stir the contents of the pot.",
+        "answer": "card-stir",
+        "cooktop": "pot-sinigang"
+    },
+    {
+        "step": 18,
+        "description": "Add the Ong Choy.",
+        "answer": "card-ong-choy",
+        "cooktop": "pot-sinigang"
+    },
+    {
+        "step": 19,
+        "description": "Turn off the stove.",
+        "answer": "card-remove-fire",
+        "cooktop": "pot-sinigang-ong-choy"
+    },
+    {
+        "step": 20,
+        "description": "Cover.",
+        "answer": "card-cover",
+        "cooktop": "pot-sinigang-ong-choy"
+    },
+    {
+        "step": 21,
+        "description": "Wait.",
+        "answer": "card-wait",
+        "cooktop": "pot-covered"
+    },
+    {
+        "step": 22,
+        "description": "Uncover.",
+        "answer": "card-uncover",
+        "cooktop": "pot-covered"
+    },
+    {
+        "step": 23,
+        "description": "Stir the contents of the pot.",
+        "answer": "card-stir",
+        "cooktop": "pot-sinigang-ong-choy-cooked"
+    },
+    {
+        "step": 24,
+        "description": "Congratulations! You completed the sinigang!",
+        "answer": "",
+        "cooktop": "pot-sinigang-ong-choy-cooked"
+    }
+]
