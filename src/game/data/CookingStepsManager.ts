@@ -10,7 +10,7 @@ export class CookingStepsManager extends DataManager {
     }
 
     loadSteps() {
-        super.loadJSON('steps', '/data/cooking_steps.json')
+        super.loadJSON('steps', 'data/cooking_steps.json')
         this.scene.load.start()
     }
 
